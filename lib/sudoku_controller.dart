@@ -23,7 +23,6 @@ class SudokuController extends GetxController {
   }
 
   updateCellValue(int index, int value) {
-    print("------num pad index: $index");
     int row = selectedCellIndex ~/ 9;
     int col = selectedCellIndex % 9;
     //validate the input value before updating the board
@@ -55,18 +54,12 @@ class SudokuController extends GetxController {
     );
   }
 
-  void showSolvedResultWithAnimation() {
-    // Delay the result display to show the animation
-    Future.delayed(const Duration(milliseconds: 5000), () {
-      update();
-    });
-  }
 
   void solvePuzzle() {
     if (_solveSudoku()) {
       //isPuzzleSolved = true;
       selectedCellIndex = -1;
-      showSolvedResultWithAnimation();
+      
       update();
     } else {
       // Puzzle is not solvable
